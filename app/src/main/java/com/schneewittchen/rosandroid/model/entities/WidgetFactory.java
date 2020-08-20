@@ -65,7 +65,8 @@ public class WidgetFactory {
         Class<?> subclass = Class.forName(className);
         Constructor<?> constructor = subclass.getConstructor();
 
-        return (BaseEntity) constructor.newInstance();
+        BaseEntity entity = (BaseEntity) constructor.newInstance();
+        return entity;
     }
 
 }

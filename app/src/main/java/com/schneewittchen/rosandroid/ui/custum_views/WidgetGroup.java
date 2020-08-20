@@ -8,6 +8,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DiffUtil;
@@ -37,7 +40,7 @@ import java.util.List;
  * @updated on 22.04.20
  * @modified by Nils Rottmann
  */
-public class WidgetGroup extends ViewGroup {
+public class WidgetGroup extends LinearLayout {
 
     public static final String TAG = WidgetGroup.class.getSimpleName();
 
@@ -48,6 +51,7 @@ public class WidgetGroup extends ViewGroup {
     List<BaseEntity> widgetList;
     DataListener widgetDataListener;
     DataListener dataListener;
+    TextView test;
 
 
     public WidgetGroup(Context context, AttributeSet attrs) {
@@ -56,7 +60,7 @@ public class WidgetGroup extends ViewGroup {
         this.widgetList = new ArrayList<>();
         this.widgetDataListener = new WidgetDataListener();
         this.setWillNotDraw(false);
-
+        this.setOrientation(VERTICAL);
         TypedArray a = getContext().obtainStyledAttributes(attrs,
                         R.styleable.WidgetGroup, 0, 0);
 
@@ -70,6 +74,7 @@ public class WidgetGroup extends ViewGroup {
         crossPaint = new Paint();
         crossPaint.setColor(crossColor);
         crossPaint.setStrokeWidth(stroke);
+
     }
 
 
@@ -82,18 +87,24 @@ public class WidgetGroup extends ViewGroup {
         tilesY = (int)(height/tileWidth);
     }
 
+
     /**
      * Position all children within this layout.
      */
+
     @Override
     public void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed,left,top,right,bottom);
         Log.i(TAG, "On Layout");
         calculateTiles();
 
         for (int i = 0; i < getChildCount(); i++) {
-            positionChild(i);
+            //positionChild(i);
         }
+
     }
+
+
 
     private void positionChild(int i) {
         float lowestPos = getHeight() - getPaddingBottom(); //- tilesY * tileWidth;

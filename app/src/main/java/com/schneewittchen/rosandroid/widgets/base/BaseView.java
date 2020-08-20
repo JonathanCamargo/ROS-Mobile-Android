@@ -2,7 +2,12 @@ package com.schneewittchen.rosandroid.widgets.base;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 
@@ -17,26 +22,32 @@ import androidx.annotation.Nullable;
  * @updated on 21.04.20
  * @modified by Nils Rottmann
  */
-public class BaseView extends View implements Interactable {
+public class BaseView extends LinearLayout implements Interactable {
 
     DataListener dataListener;
     long dataId;
     Position position;
     BaseEntity widgetEntity;
+    RelativeLayout.LayoutParams params;
 
 
     public BaseView(Context context) {
         super(context);
+        this.setWillNotDraw(false);
+        this.setOrientation(VERTICAL);
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.setWillNotDraw(false);
+        this.setOrientation(VERTICAL);
     }
 
     public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.setWillNotDraw(false);
+        this.setOrientation(VERTICAL);
     }
-
 
     @Override
     public void informDataChange(BaseData data) {
@@ -44,6 +55,10 @@ public class BaseView extends View implements Interactable {
             data.setId(getDataId());
             dataListener.onNewData(data);
         }
+    }
+
+    public String getWidgetEntityName(){
+        return this.widgetEntity.name;
     }
 
     @Override
@@ -79,9 +94,13 @@ public class BaseView extends View implements Interactable {
         return this.position;
     }
 
+    public void onSetWidgetEntity(){
+
+    }
     public void setWidgetEntity(BaseEntity widgetEntity) {
         this.widgetEntity = widgetEntity;
         this.setDataId(widgetEntity.id);
+        this.onSetWidgetEntity();
     }
     
     public boolean sameWidget(BaseEntity other) {

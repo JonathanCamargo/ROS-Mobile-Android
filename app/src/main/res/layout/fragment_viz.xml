@@ -14,7 +14,7 @@
         android:padding="8dp"
         app:crossColor="#8000BCD4">
 
-    </com.schneewittchen.rosandroid.ui.custum_views.WidgetGroup>
 
+    </com.schneewittchen.rosandroid.ui.custum_views.WidgetGroup>
 
 </RelativeLayout>

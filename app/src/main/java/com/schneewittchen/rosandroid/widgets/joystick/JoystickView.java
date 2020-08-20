@@ -6,7 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.os.Handler;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -38,14 +43,26 @@ public class JoystickView extends BaseView {
     float posX;
     float posY;
 
+    TextView test;
+
     public JoystickView(Context context) {
         super(context);
         init();
+        setOrientation(LinearLayout.HORIZONTAL);
+        setGravity(Gravity.CENTER_VERTICAL);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.joystick_view, this, true);
+        test=(TextView)getChildAt(0);
     }
 
     public JoystickView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
+        setOrientation(LinearLayout.HORIZONTAL);
+        setGravity(Gravity.CENTER_VERTICAL);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.joystick_view, this, true);
+        test=(TextView)getChildAt(0);
     }
 
     private void init(){
@@ -69,7 +86,7 @@ public class JoystickView extends BaseView {
         posX = x;
         posY = y;
         this.informDataChange(new JoystickData(posX, posY));
-
+        //this.test.layout(50,50,200,200);
         // Redraw
         invalidate();
     }
@@ -113,7 +130,11 @@ public class JoystickView extends BaseView {
 
         // Stick
         canvas.drawCircle(px[0], px[1], joystickRadius, joystickPaint);
+
+        //canvas.drawRoundRect(0, 0, width, height, 10,10,outerPaint);
+
     }
+
 
 
     private float[] convertFromPxToPolar(float x, float y) {

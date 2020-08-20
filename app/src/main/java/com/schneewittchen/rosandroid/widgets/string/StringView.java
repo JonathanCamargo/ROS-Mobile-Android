@@ -6,6 +6,10 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -31,18 +35,28 @@ public class StringView extends BaseView {
     Paint paint;
     Paint paintText;
     float cornerWidth;
-
     StringData data;
+    TextView test;
+
 
     public StringView(Context context) {
         super(context);
         init();
+        setOrientation(LinearLayout.HORIZONTAL);
+        setGravity(Gravity.CENTER_VERTICAL);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.string_view, this, true);
+        test=(TextView)getChildAt(0);
     }
 
     public StringView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-
         init();
+        setOrientation(LinearLayout.HORIZONTAL);
+        setGravity(Gravity.CENTER_VERTICAL);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflater.inflate(R.layout.string_view, this, true);
+        test=(TextView)getChildAt(0);
     }
 
     private void init() {
@@ -55,7 +69,7 @@ public class StringView extends BaseView {
         paintText.setColor(getResources().getColor(R.color.whiteHigh));
         paintText.setStyle(Paint.Style.STROKE);
         paintText.setStrokeWidth(2);
-        paintText.setTextSize(100);
+        paintText.setTextSize(32);
     }
 
     @Override
@@ -73,22 +87,6 @@ public class StringView extends BaseView {
         float top = topViz;
 
         if (data != null) {
-            /*float mapRatio = data.map.getHeight()/data.map.getWidth();
-            float vizRatio = heightViz/widthViz;
-            if (mapRatio > vizRatio) {
-                height = heightViz;
-                width = (vizRatio/mapRatio) * widthViz;
-                left = 0.5F * (widthViz - width);
-            } else if (vizRatio > mapRatio) {
-                width = widthViz;
-                height = (mapRatio/vizRatio) * heightViz;
-                top = 0.5F * (heightViz -height);
-            }
-            RectF rect = new RectF(left, top, left+width, top+height);
-            canvas.drawBitmap(data.map, null, rect, paint);
-            canvas.drawRoundRect(leftViz, topViz, widthViz, heightViz, cornerWidth, cornerWidth, paint);
-
-             */
             canvas.drawRoundRect(leftViz, topViz, widthViz, heightViz, cornerWidth, cornerWidth, paint);
             Log.i(TAG,data.string);
             canvas.drawText(data.string,leftViz,topViz+100,paintText);
