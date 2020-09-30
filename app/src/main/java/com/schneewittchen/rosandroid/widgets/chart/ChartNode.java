@@ -13,6 +13,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 
 import std_msgs.Float32;
+
 import std_msgs.String;
 
 /**
@@ -29,7 +30,7 @@ public class ChartNode extends BaseNode {
     private static final java.lang.String TAG = ChartNode.class.getSimpleName();
 
     public static final java.lang.Integer QUEUESIZE=100;
-    public static final java.lang.Integer INCREMENT=10;// Update every 10 samples
+    public static final java.lang.Integer INCREMENT=3;// Update every 10 samples
     private ArrayDeque<Float> data= new ArrayDeque<Float>(QUEUESIZE);
     private java.lang.Integer counts=0;
 

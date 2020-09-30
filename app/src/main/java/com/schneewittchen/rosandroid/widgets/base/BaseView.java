@@ -27,7 +27,7 @@ public class BaseView extends LinearLayout implements Interactable {
     DataListener dataListener;
     long dataId;
     Position position;
-    BaseEntity widgetEntity;
+    public BaseEntity widgetEntity;
     RelativeLayout.LayoutParams params;
 
 
@@ -95,8 +95,8 @@ public class BaseView extends LinearLayout implements Interactable {
     }
 
     public void onSetWidgetEntity(){
-
     }
+
     public void setWidgetEntity(BaseEntity widgetEntity) {
         this.widgetEntity = widgetEntity;
         this.setDataId(widgetEntity.id);

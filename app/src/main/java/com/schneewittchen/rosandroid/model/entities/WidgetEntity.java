@@ -76,4 +76,8 @@ public class WidgetEntity {
 
     @ColumnInfo(name = "y_scale_right")
     public float yScaleRight;
+
+    // Button specifics
+    @ColumnInfo(name = "message_str")
+    public String messageStr;
 }

@@ -8,6 +8,8 @@
         <item>Gps</item>
         <item>String</item>
         <item>Chart</item>
+        <item>Button
+        </item>
     </string-array>
 
     <string-array name="widget_descr">

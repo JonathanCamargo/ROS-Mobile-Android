@@ -41,9 +41,6 @@ public class VizFragment extends Fragment implements DataListener {
 
     private VizViewModel mViewModel;
     private WidgetGroup widgetGroupview;
-    //private AnyChartView anychart;
-    //public Cartesian cartesian;
-
 
 
     public static VizFragment newInstance() {
@@ -63,9 +60,6 @@ public class VizFragment extends Fragment implements DataListener {
         super.onViewCreated(view, savedInstanceState);
 
         widgetGroupview = view.findViewById(R.id.widget_groupview);
-        //anychart = view.findViewById(R.id.any_chart_view);
-        //cartesian = AnyChart.line();
-        //cartesian.title("Data");
         widgetGroupview.setDataListener(this);
     }
 
@@ -82,8 +76,6 @@ public class VizFragment extends Fragment implements DataListener {
         mViewModel.getData().observe(getViewLifecycleOwner(), data -> {
             widgetGroupview.setData(data);
         });
-
-        //this.anychart.setChart(this.cartesian);
     }
 
     @Override

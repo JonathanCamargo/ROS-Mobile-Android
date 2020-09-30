@@ -219,6 +219,7 @@ public class WidgetGroup extends LinearLayout {
                         entity.width, entity.height);
 
                 view.setPosition(position);
+                view.setWidgetEntity(entity);
                 return;
             }
         }
