@@ -34,8 +34,8 @@ public class WidgetChartEntity extends BaseEntity {
         this.width = 6;
         this.height = 6;
         this.subPubNoteEntity = new SubPubNoteEntity();
-        this.subPubNoteEntity.topic = "float";
-        this.subPubNoteEntity.messageType = std_msgs.Float32._TYPE;
+        this.subPubNoteEntity.topic = "float32multi";
+        this.subPubNoteEntity.messageType = std_msgs.Float32MultiArray._TYPE;
     }
 
 

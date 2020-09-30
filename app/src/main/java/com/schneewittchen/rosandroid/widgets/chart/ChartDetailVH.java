@@ -10,6 +10,7 @@ import com.schneewittchen.rosandroid.widgets.base.BaseDetailViewHolder;
 import com.schneewittchen.rosandroid.widgets.base.DetailListener;
 
 import std_msgs.Float32;
+import std_msgs.Float32MultiArray;
 
 
 /**
@@ -43,7 +44,7 @@ public class ChartDetailVH extends BaseDetailViewHolder<WidgetChartEntity> {
 
     @Override
     public void updateEntity() {
-        entity.subPubNoteEntity.messageType =  Float32._TYPE;
+        entity.subPubNoteEntity.messageType =  Float32MultiArray._TYPE;
         entity.subPubNoteEntity.topic = topicNameText.getText().toString();
     }
 }
